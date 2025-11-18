@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import { CriarEventoController } from "./controllers/criar-eventos-controller";
 
 const express = require('express');
 const cors = require('./middlewares/cors');
@@ -46,21 +47,8 @@ let pontoTuristico = []
 
 // Endpoint para criação de eventos
 app.post('/eventos', (req: Request, res: Response) => {
-    const evento = req.body;
-    const { titulo, cat, data, hora, local, preco, img, desc } = evento;
-    const novoEventoRecebe = {
-        id: crypto.randomUUID(),
-        titulo,
-        cat,
-        data,
-        hora,
-        local,
-        preco,
-        img,
-        desc
-    }
-    eventos.push(novoEventoRecebe);
-    res.status(201).send('Evento criado com sucesso!');
+    const criarEventoController = new CriarEventoController();
+    return criarEventoController.handle(req, res);
 });
 
 // Endpoint para listagem de eventos

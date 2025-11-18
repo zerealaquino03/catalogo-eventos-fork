@@ -1,1 +1,9 @@
 node_modules/
+dist/
+.env
+.DS_Store
+.vscode/
+coverage/
+npm-debug.log*
+yarn-error.log*
+tsconfig.tsbuildinfo
